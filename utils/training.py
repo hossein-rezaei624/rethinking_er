@@ -162,6 +162,11 @@ def train(model: ContinualModel, dataset: ContinualDataset,
         if hasattr(model, 'end_task'):
             model.end_task(dataset)
 
+
+        print("model.buffer.labels",  model.buffer.labels)
+        print("model.buffer.labels.shape", model.buffer.labels.shape)
+        
+
         accs = evaluate(model, dataset)
         mean_acc = np.mean(accs, axis=1)
         if n_epochs or t == dataset.N_TASKS - 1:
