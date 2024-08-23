@@ -45,7 +45,6 @@ class AGem(ContinualModel):
         samples_per_task = self.args.buffer_size // dataset.N_TASKS
         loader = dataset.not_aug_dataloader(self.args, samples_per_task)
         cur_x, cur_y = next(iter(loader))[:2]
-        print("cur_y.shape", cur_y.shape)
         self.buffer.add_data(
             examples=cur_x.to(self.device),
             labels=cur_y.to(self.device)
